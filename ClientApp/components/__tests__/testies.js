@@ -4,11 +4,11 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
-import { Clock as cock } from '../Clock';
+import Clock from '../Clock';
 
-const dispatch = () => null;
 
-it('renders <App /> container', () => {
-    const wrapper = shallow(<cock dispatch={dispatch} loaded />);
-    expect(wrapper.find('div').length).toBe(0);
-  });
+test('Renders Correct Time', () => {
+  const wrapper = shallow(<Clock />);
+  expect(wrapper.text()).toEqual('Current Time is<FormattedDate />');
+//  expect(wrapper.find('FormattedDate')).to.have.length(1);
+});

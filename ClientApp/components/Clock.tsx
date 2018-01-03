@@ -28,14 +28,14 @@ export default class Clock extends React.Component<any,clockState> {
     public render() {
       return (
         <div>
-          <h1>Current Time</h1>
+          <h1>Current Time is</h1>
           <FormattedDate date={this.state.currentDate} />
         </div>
       );
     }
   }
 
-  function FormattedDate(props) {
+ function FormattedDate(props) {
     return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
   }
   
