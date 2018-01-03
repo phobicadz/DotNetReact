@@ -54,6 +54,7 @@ class FetchData extends React.Component<WeatherForecastProps, {}> {
             </tbody>
         </table>;
     }
+    
 
     private renderPagination() {
         let prevStartDateIndex = (this.props.startDateIndex || 0) - 5;
