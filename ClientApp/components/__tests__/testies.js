@@ -11,9 +11,7 @@ import RandomUsers from '../RandomUsers';
 import "isomorphic-fetch";
 import { createWaitForElement } from 'enzyme-wait';
 
-
-const waitForSample = createWaitForElement('#people-images');
-const randomUserComponent = mount(<RandomUsers />);
+const waitForUsers = createWaitForElement('#flang',2000,10)
 
 
 test('Renders Time Component', () => {
@@ -24,8 +22,11 @@ test('Renders Time Component', () => {
 });
 
 // should be async which is a total bitch to test for some fucking reason
-it('Check 10 people are shown', () => {
-
-  waitForSample(randomUserComponent).then(randomUserComponent => console.log(randomUserComponent.debug()));
- 
+test('Check 10 people are shown', () => {
+  const component = mount(<RandomUsers />);
+  return waitForUsers(component).then(
+    (componentReady) => {
+      console.log(componentReady.debug())
+    }
+  )
 });

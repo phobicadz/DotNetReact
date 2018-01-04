@@ -11,30 +11,24 @@ export default class RandomUsers extends React.Component<any,randomUserState> {
     constructor(props) {
       super(props);
       this.handleNumberChange = this.handleNumberChange.bind(this);
-      this.state = { pictures:"loading...", peopleToDisplay: 1000, isLoading:true };
+      this.state = { pictures:null, peopleToDisplay: 10, isLoading:true };
     }
   
-    componentDidMount() {
-      try {
-        this.getPictures(this.state.peopleToDisplay);
-      }
-      catch(e) {
-        console.error('Error occured ' + e);
-      }
+    componentWillMount() {
+        this.getPictures(this.state.peopleToDisplay);  
     }
   
     getPictures(value) {
       fetch(`https://randomuser.me/api/?results=${value}`)
         .then(results => results.json()).then(data => {
           let pictureData = data.results.map((pic) => (
-            <div id='people-images'>
-              <div key={pic.login.salt}>
+              <div key={pic.login.salt} >
                 <img src={pic.picture.medium} alt="" />
                 <span>{pic.name.title}&nbsp;{pic.name.first}&nbsp;{pic.name.last}</span>
               </div>
-            </div>
+             
           ));
-          this.setState({ pictures: pictureData, peopleToDisplay: value, isLoading: false });
+          this.setState({ pictures: pictureData, peopleToDisplay: value, isLoading: false }); 
         });
     }
   
@@ -44,10 +38,12 @@ export default class RandomUsers extends React.Component<any,randomUserState> {
     }
   
     render() {
-      return (
-        <div id='parent'>
-        {this.state.pictures}
-      </div> )
+      return (<div>
+        {this.state.isLoading ? <h2>Loading...</h2> : (
+          <span id='flang'> {this.state.pictures} </span>
+        )}
+        </div>
+       )
     }
   }
   
