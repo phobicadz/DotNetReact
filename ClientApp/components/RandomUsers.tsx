@@ -3,30 +3,38 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 
 interface randomUserState {
   pictures: any,
-  peopleToDisplay: number
+  peopleToDisplay: number,
+  isLoading: boolean
 }
 
 export default class RandomUsers extends React.Component<any,randomUserState> {
     constructor(props) {
       super(props);
       this.handleNumberChange = this.handleNumberChange.bind(this);
-      this.state = { pictures:null, peopleToDisplay: 10 };
+      this.state = { pictures:"loading...", peopleToDisplay: 1000, isLoading:true };
     }
   
     componentDidMount() {
-      this.getPictures(this.state.peopleToDisplay);
+      try {
+        this.getPictures(this.state.peopleToDisplay);
+      }
+      catch(e) {
+        console.error('Error occured ' + e);
+      }
     }
   
     getPictures(value) {
       fetch(`https://randomuser.me/api/?results=${value}`)
         .then(results => results.json()).then(data => {
           let pictureData = data.results.map((pic) => (
-            <div key={pic.login.salt}>
-              <img src={pic.picture.medium} alt="" />
-              <span>{pic.name.title}&nbsp;{pic.name.first}&nbsp;{pic.name.last}</span>
+            <div id='people-images'>
+              <div key={pic.login.salt}>
+                <img src={pic.picture.medium} alt="" />
+                <span>{pic.name.title}&nbsp;{pic.name.first}&nbsp;{pic.name.last}</span>
+              </div>
             </div>
           ));
-          this.setState({ pictures: pictureData, peopleToDisplay: value });
+          this.setState({ pictures: pictureData, peopleToDisplay: value, isLoading: false });
         });
     }
   
@@ -37,7 +45,7 @@ export default class RandomUsers extends React.Component<any,randomUserState> {
   
     render() {
       return (
-        <div>
+        <div id='parent'>
         {this.state.pictures}
       </div> )
     }
