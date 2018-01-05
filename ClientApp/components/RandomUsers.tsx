@@ -11,7 +11,7 @@ export default class RandomUsers extends React.Component<any,randomUserState> {
     constructor(props) {
       super(props);
       this.handleNumberChange = this.handleNumberChange.bind(this);
-      this.state = { pictures:null, peopleToDisplay: 10, isLoading:true };
+      this.state = { pictures:null, peopleToDisplay: 100, isLoading:true };
     }
   
     componentWillMount() {
@@ -39,9 +39,7 @@ export default class RandomUsers extends React.Component<any,randomUserState> {
   
     render() {
       return (<div>
-        {this.state.isLoading ? <h2>Loading...</h2> : (
-          <span id='flang'> {this.state.pictures} </span>
-        )}
+          {this.state.pictures} 
         </div>
        )
     }

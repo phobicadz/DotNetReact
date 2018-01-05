@@ -6,6 +6,7 @@ import FetchData from './components/FetchData';
 import Counter from './components/Counter';
 import Clock from './components/Clock';
 import RandomUsers from './components/RandomUsers';
+import Example from './components/Example';
 
 export const routes = <Layout>
     <Route exact path='/' component={ Home } />
@@ -13,4 +14,5 @@ export const routes = <Layout>
     <Route path='/fetchdata/:startDateIndex?' component={ FetchData } />
     <Route path='/clock' component={ Clock } />
     <Route path='/randomUsers' component={ RandomUsers } />
+    <Route path='/example' component={ Example } />
 </Layout>;
