@@ -15,14 +15,11 @@ import Example from '../Example';
 test('Renders Time Component', () => {
   const wrapper = shallow(<Clock />);
   expect(wrapper.find('FormattedDate')).toHaveLength(1);
-
-  console.log(shallow(<Clock />).debug())
 });
 
 
 it('Still loading...', () => {
   const wrapper = shallow(<RandomUsers />);
-  console.log(wrapper.state('isLoading'));
   expect(wrapper.state('isLoading')).toEqual(true);
 });
 
@@ -33,7 +30,6 @@ it('Random Users loaded with correct amount', (done) => {
   setTimeout(() => {
     expect(wrapper.state('isLoading')).toEqual(false);
     expect(wrapper.state('pictures').length).toEqual(wrapper.state('peopleToDisplay'));
-    console.log("Array Length:" + wrapper.state('pictures').length + " peopleToDisplay:" + wrapper.state('peopleToDisplay'));
     done();
   },500);
 });
@@ -41,7 +37,6 @@ it('Random Users loaded with correct amount', (done) => {
 it('Example Test',(done) => {
   const wrapper = shallow(<Example />);
   setTimeout(() => {
-    console.log(wrapper.debug());
     done();
   },300);
 });
