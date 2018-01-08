@@ -14,7 +14,7 @@ export default class RandomUsers extends React.Component<any,randomUserState> {
       this.state = { pictures:null, peopleToDisplay: 100, isLoading:true };
     }
   
-    componentWillMount() {
+    componentDidMount() {
         this.getPictures(this.state.peopleToDisplay);  
     }
   
