@@ -14,10 +14,9 @@ class Counter extends React.Component<CounterProps, {}> {
     public render() {
         return <div>
             <h1>Counter</h1>
-
             <p>This is a simple example of a React component!!!</p>
-
             <p>Current count: <strong>{ this.props.count }</strong></p>
+            <p>Last Action: <strong>{ this.props.slag }</strong></p>
 
             <button onClick={ () => { this.props.increment() } }>Increment</button>
             <button onClick={ () => { this.props.decrement() } }>Decrement</button>
@@ -25,7 +24,6 @@ class Counter extends React.Component<CounterProps, {}> {
         </div>;
     }
 }
-
 // Wire up the React component to the Redux store
 export default connect(
     (state: ApplicationState) => state.counter, // Selects which state properties are merged into the component's props
