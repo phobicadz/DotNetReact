@@ -14,10 +14,11 @@ export interface CounterState {
 
 interface IncrementCountAction { type: 'INCREMENT_COUNT' }
 interface DecrementCountAction { type: 'DECREMENT_COUNT' }
+interface MultiplyCountAction { type: 'MULTIPLY_COUNT' }
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction = IncrementCountAction | DecrementCountAction;
+type KnownAction = IncrementCountAction | DecrementCountAction | MultiplyCountAction;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.
@@ -25,7 +26,8 @@ type KnownAction = IncrementCountAction | DecrementCountAction;
 
 export const actionCreators = {
     increment: () => <IncrementCountAction>{ type: 'INCREMENT_COUNT' },
-    decrement: () => <DecrementCountAction>{ type: 'DECREMENT_COUNT' }
+    decrement: () => <DecrementCountAction>{ type: 'DECREMENT_COUNT' },
+    multiplyByTen: () => <MultiplyCountAction>{ type: 'MULTIPLY_COUNT' }
 };
 
 // ----------------
@@ -37,6 +39,8 @@ export const reducer: Reducer<CounterState> = (state: CounterState, action: Know
             return { count: state.count + 1 };
         case 'DECREMENT_COUNT':
             return { count: state.count - 1 };
+        case 'MULTIPLY_COUNT':
+            return { count: state.count * 10};
         default:
             // The following line guarantees that every action in the KnownAction union has been covered by a case above
             const exhaustiveCheck: never = action;
