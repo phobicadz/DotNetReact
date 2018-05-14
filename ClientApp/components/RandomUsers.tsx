@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
-const divStyle = {
-  height: '80px',
-  lineHeight: '80px'
-};
-
 interface randomUserState {
   pictures: any,
   peopleToDisplay: number,
@@ -28,9 +23,9 @@ export default class RandomUsers extends React.Component<any, randomUserState> {
     fetch(`https://randomuser.me/api/?results=${value}`)
       .then(results => results.json()).then(data => {
         let pictureData = data.results.map((pic) => (
-            <div className="row" style={divStyle} key={pic.login.salt}>
+            <div className="row person-row" key={pic.login.salt}>
               <div className="col-sm-1" >
-                  <img src={pic.picture.medium} alt="" />
+                  <img src={pic.picture.medium} alt=""/>
               </div>
               <div className="col-sm-4">
                 <span><strong>{pic.name.title}&nbsp;{pic.name.first}&nbsp;{pic.name.last}</strong></span>

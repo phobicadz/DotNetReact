@@ -19,6 +19,15 @@
     z-index: 1;
 }
 
+.person-row {
+    line-height: 80px;
+    height: 85px;
+}
+
+.person-row:hover {
+    background-color:silver;
+}
+
 @media (max-width: 767px) {
     /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
     body {
