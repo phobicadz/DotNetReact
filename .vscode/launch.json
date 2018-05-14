@@ -43,7 +43,7 @@
         },
         {
             "type": "chrome",
-            "request": "attach",
+            "request": "launch",
             "url":"http://localhost:5000/",
             "name": "Chrome Attach",
             "port": 9222,
