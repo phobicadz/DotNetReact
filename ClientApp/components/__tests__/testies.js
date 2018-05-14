@@ -31,7 +31,7 @@ it('Random Users loaded with correct amount', (done) => {
     expect(wrapper.state('isLoading')).toEqual(false);
     expect(wrapper.state('pictures').length).toEqual(wrapper.state('peopleToDisplay'));
     done();
-  },500);
+  },1000);
 });
 
 it('Example Test',(done) => {
