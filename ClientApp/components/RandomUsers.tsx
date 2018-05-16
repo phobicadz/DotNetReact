@@ -23,14 +23,17 @@ export default class RandomUsers extends React.Component<any, randomUserState> {
     fetch(`https://randomuser.me/api/?results=${value}`)
       .then(results => results.json()).then(data => {
         let pictureData = data.results.map((pic) => (
-            <div className="row person-row" key={pic.login.salt}>
-              <div className="col-sm-1" >
-                  <img src={pic.picture.medium} alt=""/>
-              </div>
-              <div className="col-sm-4">
-                <span><strong>{pic.name.title}&nbsp;{pic.name.first}&nbsp;{pic.name.last}</strong></span>
-              </div>
+          <div className="row person-row" key={pic.login.salt}>
+            <div className="col-sm-1" >
+              <img src={pic.picture.medium} alt="" />
             </div>
+            <div className="col-sm-3">
+              <span><strong>{pic.name.title}&nbsp;{pic.name.first}&nbsp;{pic.name.last}</strong></span>
+            </div>
+            <div className="col-sm-4">
+              <span>{pic.email}</span>
+            </div>
+          </div>
         ));
         this.setState({ pictures: pictureData, peopleToDisplay: value, isLoading: false });
       });
