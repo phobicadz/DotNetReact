@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+//import { Link, RouteComponentProps } from 'react-router-dom';
 
 interface randomUserState {
   pictures: any,
