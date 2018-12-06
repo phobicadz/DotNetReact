@@ -41,7 +41,7 @@ export const reducer: Reducer<CounterState> = (state: CounterState, action: Know
         case 'DECREMENT_COUNT':
             return { count: state.count - 1, slag:"Decrease" };
         case 'MULTIPLY_COUNT':
-            return { count: state.count * 10, slag:"Multiply" };
+            return { count: state.count * 30, slag:"Multiply" };
         default:
             // The following line guarantees that every action in the KnownAction union has been covered by a case above
             const exhaustiveCheck: never = action;

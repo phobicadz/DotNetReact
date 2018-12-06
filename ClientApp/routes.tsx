@@ -7,6 +7,7 @@ import Counter from './components/Counter';
 import Clock from './components/Clock';
 import RandomUsers from './components/RandomUsers';
 import Example from './components/Example';
+import Stocks from './components/Stocks';
 
 export const routes = <Layout>
     <Route exact path='/' component={ Home } />
@@ -15,4 +16,5 @@ export const routes = <Layout>
     <Route path='/clock' component={ Clock } />
     <Route path='/randomUsers' component={ RandomUsers } />
     <Route path='/example' component={ Example } />
+    <Route path='/stocks' component={ Stocks }/>
 </Layout>;

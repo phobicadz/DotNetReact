@@ -18,7 +18,7 @@ namespace ReactWithNetCore.Controllers
         public IEnumerable<WeatherForecast> WeatherForecasts(int startDateIndex)
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => NewMethod(startDateIndex, index, rng));
+            return Enumerable.Range(1, 6).Select(index => NewMethod(startDateIndex, index, rng));
         }
 
         private static WeatherForecast NewMethod(int startDateIndex, int index, Random rng) => new WeatherForecast
