@@ -16,5 +16,5 @@ export const routes = <Layout>
     <Route path='/clock' component={ Clock } />
     <Route path='/randomUsers' component={ RandomUsers } />
     <Route path='/example' component={ Example } />
-    <Route path='/stocks' component={ Stocks }/>
+    <Route path='/stocks/:index?' component={ Stocks }/>
 </Layout>;
